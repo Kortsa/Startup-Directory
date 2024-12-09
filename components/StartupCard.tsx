@@ -36,7 +36,7 @@ export const StartupCard = ({ post }: { post: StartupTypeCard }) => {
         <Link href={`/user/${authorId}`}>
           <Image
             src="https://placehold.co/48x48"
-            alt="placeholder"
+            alt="placeholderr"
             width={48}
             height={48}
             className="rounded-full"
@@ -53,7 +53,7 @@ export const StartupCard = ({ post }: { post: StartupTypeCard }) => {
           <p className="text-16-medium">{category}</p>
         </Link>
         <Button className="startup-card_btn" asChild>
-          <Link href={`/startup/${_id}`}>Details</Link>
+          <Link href={`/startup/${_id}`}>Detail</Link>
         </Button>
       </div>
     </li>
