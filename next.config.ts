@@ -14,14 +14,15 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
-    // ppr: "incremental",
+    ppr: "incremental",
+    // ppr: true,
   },
 
-  // devIndicators: {
-  //   appIsrStatus: true,
-  //   buildActivity: true,
-  //   buildActivityPosition: "bottom-right",
-  // },
+  devIndicators: {
+    appIsrStatus: true,
+    buildActivity: true,
+    buildActivityPosition: "bottom-right",
+  },
 };
 
 export default nextConfig;
