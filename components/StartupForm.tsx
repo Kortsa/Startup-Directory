@@ -10,6 +10,7 @@ import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { Result } from "postcss";
+import { createPitch } from "@/lib/actions";
 
 const StartupForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -29,18 +30,19 @@ const StartupForm = () => {
 
       await formSchema.parseAsync(formValues);
 
-      console.log(formValues);
+      // console.log(formValues);
 
-      // const result = await createIdea(prevState, formData, pitch)
+      const result = await createPitch(prevState, formData, pitch)
       // console.log(result);
-      // if (result.status === "SUCCESS") {
-      //   toast({
-      //     title: "Success",
-      //     description: "Your startup has been created successfully",
-      //   });
-      //   router.push(`/starup/${result.id}`)
-      // }
-      // return Result;
+      
+      if (result.status === "SUCCESS") {
+        toast({
+          title: "Success",
+          description: "Your startup has been created successfully",
+        });
+        router.push(`/starup/${result._id}`)
+      }
+      return Result;
       
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -138,6 +140,8 @@ const StartupForm = () => {
         <label htmlFor="pitch" className="startup-form_label">
           Pitch
         </label>
+
+       
         <MDEditor
           value={pitch}
           onChange={(value) => setPitch(value as string)}
